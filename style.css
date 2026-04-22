@@ -30,19 +30,32 @@ nav ul {
 nav a {
     color: white;
     text-decoration: none;
+    position: relative;
 }
 
 nav a:hover {
     color: #4ea1ff;
 }
 
-/* GENERAL */
-section {
-    padding: 60px 10%;
+/* NAV UNDERLINE */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #4ea1ff;
+    transition: 0.3s;
 }
 
-h1 {
-    margin-bottom: 20px;
+nav a:hover::after {
+    width: 100%;
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 10%;
 }
 
 /* BUTTON */
@@ -51,6 +64,7 @@ h1 {
     border-radius: 8px;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -58,11 +72,9 @@ h1 {
     color: white;
 }
 
-/* CARDS */
-.card {
-    background: #111827;
-    padding: 20px;
-    border-radius: 12px;
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(78,161,255,0.3);
 }
 
 /* GRID */
@@ -70,4 +82,45 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: #111827;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* FADE-IN */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* HERO ANIMATION */
+.hero {
+    animation: slideUp 1s ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
